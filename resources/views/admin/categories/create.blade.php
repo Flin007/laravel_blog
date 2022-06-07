@@ -33,11 +33,19 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="#">
+                            <form action="{{ route('admin.category.store') }}" method="POST">
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="category_title">Название</label>
-                                        <input id="category_title" name="title" type="text" class="form-control" placeholder="Название категории">
+                                        <input id="category_title"
+                                               name="title"
+                                               type="text"
+                                               class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}}"
+                                               placeholder="Название категории">
+                                        @error('title')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
