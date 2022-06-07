@@ -33,8 +33,9 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="" method="POST">
+                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                                 @csrf
+                                @method('PATCH')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="category_title">Название</label>
