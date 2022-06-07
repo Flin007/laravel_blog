@@ -49,7 +49,7 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td>{{ $category->id }}</td>
-                                        <td>{{ $category->title }}</td>
+                                        <td><a href="{{ route('admin.category.show', $category->id) }}">{{ $category->title }}</a></td>
                                         <td class="align-middle">
                                             <div class="progress progress-xs">
                                                 <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
