@@ -56,7 +56,7 @@
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mr-2">
+                                            <a href="{{ route('admin.category.edit', $category->id) }}" class="mr-2">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a href="#" class="text-danger">
