@@ -20,6 +20,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ Route::currentRouteName() === 'admin.tag.index' ? '#' : route('admin.tag.index') }}"
+                   class="nav-link {{ Route::currentRouteName() === 'admin.tag.index' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>
+                        Теги
+                    </p>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

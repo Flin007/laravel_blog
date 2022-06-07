@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Admin\Tag;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\Category;
+use App\Models\Tag;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, Category $category )
+    public function __invoke(UpdateRequest $request, Tag $tag )
     {
         $data = $request->validated();
-        $category->update($data);
-        return view('admin.category.show', compact('category'));
+        $tag->update($data);
+        return view('admin.tag.show', compact('tag'));
     }
 }
