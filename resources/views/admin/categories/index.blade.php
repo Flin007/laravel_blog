@@ -59,9 +59,15 @@
                                             <a href="{{ route('admin.category.edit', $category->id) }}" class="mr-2">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="#" class="text-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                            <form class="d-inline-block"
+                                                  action="{{ route('admin.category.delete', $category->id) }}"
+                                                  method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    <i class="fas fa-trash text-danger" role="button"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
