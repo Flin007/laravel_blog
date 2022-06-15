@@ -12,6 +12,15 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">Основное меню</li>
             <li class="nav-item">
+                <a href="{{ Route::currentRouteName() === 'admin.post.index' ? '#' : route('admin.post.index') }}"
+                   class="nav-link {{ Route::currentRouteName() === 'admin.post.index' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <p>
+                        Посты
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ Route::currentRouteName() === 'admin.category.index' ? '#' : route('admin.category.index') }}"
                    class="nav-link {{ Route::currentRouteName() === 'admin.category.index' ? 'active' : '' }}">
                     <i class="nav-icon fab fa-bandcamp"></i>
