@@ -50,8 +50,21 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label>Выберите категорию</label>
+                                        <select class="form-control" name="category_id">
+                                            @foreach($categories as $category)
+                                                <option
+                                                    value="{{ $category->id }}"
+                                                    {{ $category->id == old('category_id') ? 'selected' : '' }}
+                                                >
+                                                    {{ $category->title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputFile">Главное изображение</label>
-                                        <div class="input-group">
+                                        <div class="input-group {{ $errors->has('main_image') ? ' is-invalid' : ''}}">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="main_image" name="main_image">
                                                 <label class="custom-file-label" for="main_image">Выберете изображение</label>
@@ -60,10 +73,13 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
+                                        @error('main_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Главное изображение</label>
-                                        <div class="input-group">
+                                        <label for="exampleInputFile">Превью изображение</label>
+                                        <div class="input-group  {{ $errors->has('preview_image') ? ' is-invalid' : ''}}">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
                                                 <label class="custom-file-label" for="preview_image">Выберете изображение</label>
@@ -72,6 +88,9 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
+                                        @error('preview_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <textarea
