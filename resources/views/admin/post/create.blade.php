@@ -33,7 +33,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.post.store') }}" method="POST">
+                            <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -48,6 +48,30 @@
                                         @error('title')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Главное изображение</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="main_image" name="main_image">
+                                                <label class="custom-file-label" for="main_image">Выберете изображение</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Загрузить</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Главное изображение</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
+                                                <label class="custom-file-label" for="preview_image">Выберете изображение</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Загрузить</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <textarea

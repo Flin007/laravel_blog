@@ -89,6 +89,8 @@
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 <!-- Summernote -->
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('#summernote').summernote({
@@ -101,6 +103,9 @@
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['height', ['height']]
             ]
+        });
+        $(function () {
+            bsCustomFileInput.init();
         });
     });
 </script>
