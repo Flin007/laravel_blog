@@ -33,4 +33,19 @@ class UpdateRequest extends FormRequest
             'tag_ids.*' => 'nullable|integer|exists:tags,id'
         ];
     }
+    //Кастомные ошибки
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это обязательное поле',
+            'title.string' => 'Неверный тип данных, ожидаем строку',
+            'preview_image.required' => 'Это обязательное поле',
+            'preview_image.file' => 'Неверный тип данных, ожидаем файл',
+            'main_image.required' => 'Это обязательное поле',
+            'main_image.file' => 'Неверный тип данных, ожидаем файл',
+            'category_id.required' => 'Обязательное поле',
+            'category_id.exists' => 'Id категории должен быть в базе',
+            'tag_ids.exists' => 'Необходимо отправить массив id',
+        ];
+    }
 }

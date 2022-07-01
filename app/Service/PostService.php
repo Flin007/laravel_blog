@@ -17,11 +17,17 @@ class PostService
             $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
 
             //Получаем тэги и сразу их уничтожааем из даты, т.к. сохраняются они отдельной моделью
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
+            if (isset($data['tag_ids'])){
+                $tagIds = $data['tag_ids'];
+                unset($data['tag_ids']);
+            }
+
             //Записываем наш пост в переменную, чтобы потом связать с ним id тэгов
             $post = Post::firstOrcreate($data);
-            $post->tags()->attach($tagIds);
+            if (isset($tagIds)){
+                $post->tags()->attach($tagIds);
+            }
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
@@ -34,6 +40,7 @@ class PostService
     {
         try {
             DB::beginTransaction();
+
             //В дату где приходит изображение перезаписываем путь то картинки, которую отправили в Storage
             if (isset($data['preview_image'])){
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
@@ -43,12 +50,17 @@ class PostService
             }
 
             //Получаем тэги и сразу их уничтожааем из даты, т.к. сохраняются они отдельной моделью
-            $tagIds = $data['tag_ids'];
-            unset($data['tag_ids']);
+            if (isset($data['tag_ids'])){
+                $tagIds = $data['tag_ids'];
+                unset($data['tag_ids']);
+            }
 
             //Записываем наш пост в переменную, чтобы потом связать с ним id тэгов
             $post->update($data);
-            $post->tags()->sync($tagIds);
+            if ($tagIds){
+                $post->tags()->sync($tagIds);
+            }
+
             DB::commit();
 
             return $post;
