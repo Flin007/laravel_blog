@@ -33,7 +33,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route('admin.post.update', $post->id) }}" method="POST">
+                            <form action="{{ route('admin.post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="card-body">
@@ -43,9 +43,95 @@
                                                name="title"
                                                type="text"
                                                class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}}"
-                                               placeholder="Название поста"
-                                               value="{{ $post->title }}">
+                                               placeholder="Заголовок поста"
+                                               value="{{ $post->title }}"
+                                        >
                                         @error('title')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Выберите категорию</label>
+                                        <select class="form-control" name="category_id">
+                                            @foreach($categories as $category)
+                                                <option
+                                                    value="{{ $category->id }}"
+                                                    {{ $category->id == $post->$category ? 'selected' : '' }}
+                                                >
+                                                    {{ $category->title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Тэги</label>
+                                        <select
+                                            class="select2"
+                                            name="tag_ids[]"
+                                            multiple="multiple"
+                                            data-placeholder="Выберите тэги"
+                                            style="width: 100%;">
+                                            @foreach($tags as $tag)
+                                                <option
+                                                    {{ is_array( $post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }}
+                                                    value="{{ $tag->id }}"
+                                                >
+                                                    {{ $tag->title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="w-25">
+                                            <img class="w-50" src="{{ Storage::url($post->main_image) }}" alt="main_image">
+                                        </div>
+                                        <label for="exampleInputFile">Главное изображение</label>
+                                        <div
+                                            class="input-group {{ $errors->has('main_image') ? ' is-invalid' : ''}}">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="main_image"
+                                                       name="main_image">
+                                                <label class="custom-file-label" for="main_image">Выберете
+                                                    изображение</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Загрузить</span>
+                                            </div>
+                                        </div>
+                                        @error('main_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="w-25">
+                                            <img class="w-50" src="{{ url('storage/'.$post->preview_image) }}" alt="preview_image">
+                                        </div>
+                                        <label for="exampleInputFile">Превью изображение</label>
+                                        <div
+                                            class="input-group  {{ $errors->has('preview_image') ? ' is-invalid' : ''}}">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="preview_image"
+                                                       name="preview_image">
+                                                <label class="custom-file-label" for="preview_image">Выберете
+                                                    изображение</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Загрузить</span>
+                                            </div>
+                                        </div>
+                                        @error('preview_image')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea
+                                            id="summernote"
+                                            name="content"
+                                            class="form-control{{ $errors->has('content') ? ' is-invalid' : ''}}"
+                                        >
+                                            {{ $post->content }}
+                                        </textarea>
+                                        @error('content')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>

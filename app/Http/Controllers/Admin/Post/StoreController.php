@@ -14,8 +14,8 @@ class StoreController extends Controller
         try {
             $data = $request->validated();
             //В дату где приходит изображение перезаписываем путь то картинки, которую отправили в Storage
-            $data['preview_image'] = Storage::put('/images',$data['preview_image']);
-            $data['main_image'] = Storage::put('/images',$data['main_image']);
+            $data['preview_image'] = Storage::disk('public')->put('/images',$data['preview_image']);
+            $data['main_image'] = Storage::disk('public')->put('/images',$data['main_image']);
 
             //Получаем тэги и сразу их уничтожааем из даты, т.к. сохраняются они отдельной моделью
             $tagIds = $data['tag_ids'];
