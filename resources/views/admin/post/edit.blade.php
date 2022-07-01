@@ -86,8 +86,7 @@
                                             <img class="w-50" src="{{ Storage::url($post->main_image) }}" alt="main_image">
                                         </div>
                                         <label for="exampleInputFile">Главное изображение</label>
-                                        <div
-                                            class="input-group {{ $errors->has('main_image') ? ' is-invalid' : ''}}">
+                                        <div class="input-group {{ $errors->has('main_image') ? ' is-invalid' : ''}}">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="main_image"
                                                        name="main_image">
@@ -98,9 +97,6 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
-                                        @error('main_image')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <div class="w-25">
