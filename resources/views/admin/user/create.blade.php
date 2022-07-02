@@ -37,13 +37,35 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="user_name">Название</label>
+                                        <label for="user_name">Имя</label>
                                         <input id="user_name"
                                                name="name"
                                                type="text"
                                                class="form-control{{ $errors->has('name') ? ' is-invalid' : ''}}"
                                                placeholder="Имя пользователя">
                                         @error('name')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_email">Email</label>
+                                        <input id="user_email"
+                                               name="email"
+                                               type="text"
+                                               class="form-control{{ $errors->has('email') ? ' is-invalid' : ''}}"
+                                               placeholder="Email пользователя">
+                                        @error('email')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_password">Пароль</label>
+                                        <input id="user_password"
+                                               name="password"
+                                               type="text"
+                                               class="form-control{{ $errors->has('password') ? ' is-invalid' : ''}}"
+                                               placeholder="Пароль пользователя">
+                                        @error('password')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>

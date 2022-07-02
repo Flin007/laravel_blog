@@ -38,14 +38,28 @@
                                 @method('PATCH')
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="user_name">Название</label>
+                                        <label for="user_name">Имя</label>
                                         <input id="user_name"
                                                name="name"
                                                type="text"
                                                class="form-control{{ $errors->has('name') ? ' is-invalid' : ''}}"
                                                placeholder="Имя пользователя"
-                                               value="{{ $user->name }}">
+                                               value="{{ $user->name }}"
+                                        >
                                         @error('name')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_email">Email</label>
+                                        <input id="user_email"
+                                               name="email"
+                                               type="text"
+                                               class="form-control{{ $errors->has('email') ? ' is-invalid' : ''}}"
+                                               placeholder="Email пользователя"
+                                               value="{{ $user->email }}"
+                                        >
+                                        @error('email')
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
