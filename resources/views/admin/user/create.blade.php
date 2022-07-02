@@ -69,6 +69,19 @@
                                         <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <label>Роль</label>
+                                        <select class="form-control" name="role">
+                                            @foreach($roles as $id => $role)
+                                                <option
+                                                    value="{{ $id }}"
+                                                    {{ $id == old('role') ? 'selected' : '' }}
+                                                >
+                                                    {{ $role }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
 
