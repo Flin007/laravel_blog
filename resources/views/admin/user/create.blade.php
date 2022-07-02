@@ -59,17 +59,6 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="user_password">Пароль</label>
-                                        <input id="user_password"
-                                               name="password"
-                                               type="text"
-                                               class="form-control{{ $errors->has('password') ? ' is-invalid' : ''}}"
-                                               placeholder="Пароль пользователя">
-                                        @error('password')
-                                        <span class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
                                         <label>Роль</label>
                                         <select class="form-control" name="role">
                                             @foreach($roles as $id => $role)
