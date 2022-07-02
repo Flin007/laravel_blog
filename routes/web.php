@@ -18,7 +18,7 @@ Route::group(['namespace' => 'Main'], function () {
 });
 
 //Группа роутов для админки
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
     //Главная страница админки
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'IndexController');

@@ -41,6 +41,15 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar right -->
+            <li class="nav-item">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <input class="btn" type="submit" value="Выход">
+                </form>
+            </li>
+        </ul>
         <!-- /.Left navbar links -->
     </nav>
     <!-- /.navbar -->
